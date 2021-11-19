@@ -84,5 +84,5 @@ class Autoload extends AutoloadConfig
      * @var array<int, string>
      */
     public $files = [];
-    public $helper = ['html'];
+    public $helper = ['html', 'form', 'url'];
 }
