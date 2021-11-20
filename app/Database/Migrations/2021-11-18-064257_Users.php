@@ -21,7 +21,7 @@ class Users extends Migration
             ],
             'email' => [
                 'type'              => 'VARCHAR',
-                'constraint'        => '12',
+                'constraint'        => '100',
                 'null'              => false
             ],
             'password' => [
@@ -29,13 +29,17 @@ class Users extends Migration
                 'constraint'        => '100',
                 'null'              => false
             ],
-            'token' => [
-                'type'              => 'TEXT',
-                'null'              => true
-            ],
             'profile_picture' => [
                 'type'              => 'TEXT',
                 'null'              => true
+            ],
+            'created_at' => [
+                'type'           => 'DATETIME',
+                'null'           => true,
+            ],
+            'updated_at' => [
+                'type'           => 'DATETIME',
+                'null'           => true,
             ]
         ]);
 

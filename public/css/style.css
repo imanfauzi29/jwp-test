@@ -66,3 +66,7 @@ input[type="file"] {
 .profile::after {
     display: none;
 }
+
+.log-in-btn:hover {
+    color: #333 !important;
+}
