@@ -31,18 +31,20 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index', ['filter' => 'auth']);
+$routes->get('/', 'Home::index');
 
-$routes->get('auth/login', 'Auth::login');
+$routes->get('auth/login', 'Auth::login', ['filter' => 'auth']);
 $routes->post('auth/login', 'Auth::postLogin');
 
-$routes->get('/auth/register', 'Auth::register');
+$routes->get('/auth/register', 'Auth::register', ['filter' => 'auth']);
 $routes->post('/auth/register', 'Auth::postRegister');
 
-$routes->get('/auth/forgot-password', 'Auth::forgotPassword');
-$routes->get('/auth/forgot-password/reset-password/token/(:hash)', 'Auth::resetPassword/$1');
+$routes->get('/auth/forgot-password', 'Auth::forgotPassword', ['filter' => 'auth']);
+$routes->get('/auth/forgot-password/reset-password/token/(:hash)', 'Auth::resetPassword/$1', ['filter' => 'auth']);
 $routes->post('/auth/forgot-password/reset-password/token/(:hash)', 'Auth::resetPassword/$1');
 $routes->post('auth/forgot-password', 'Auth::postForgotPassword');
+
+$routes->get('/auth/logout', 'Auth::logout');
 
 /*
  * --------------------------------------------------------------------

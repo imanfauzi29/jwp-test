@@ -27,10 +27,11 @@ class Auth extends BaseController
             $verify_pass =  password_verify($post['password'], $password);
             if ($verify_pass) {
                 $session_data = [
-                    'user_id' => $data['id'],
-                    'name' => $data['name'],
-                    'email' => $data['email'],
-                    'isLoggedIn' => true
+                    'user_id'       => $data['id'],
+                    'name'          => $data['name'],
+                    'email'         => $data['email'],
+                    'avatar'        => $data['profile_picture'],
+                    'isLoggedIn'    => true
                 ];
                 
                 $session->set($session_data);
@@ -72,7 +73,6 @@ class Auth extends BaseController
         $userModel = new UserModel();
         
         $image_profile = $this->request->getFile("profile");
-        var_dump($this->request->getFile('profile'));
         $filename = $image_profile->getRandomName();
         $password = $this->request->getPost("password");
 
@@ -133,7 +133,7 @@ class Auth extends BaseController
     
                 $update = $userModel->update_data($decode, $data);
                 if ($update) {
-                    session()->setFlashdata('success', 'Password berhasil diubah!');
+                    session()->setFlashdata('success', 'Password berhasil diubah! <a href="/auth/login">Login</a>');
                 } else {
                     session()->setFlashdata('failed', 'Password gagal diupdate!');
                 }
@@ -171,5 +171,12 @@ class Auth extends BaseController
         $stamp = $time->format('d-m-Y H:i:s');
         
         return strtotime($now) < strtotime($stamp) ? $id : false;
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect()->to('/');
     }
 }

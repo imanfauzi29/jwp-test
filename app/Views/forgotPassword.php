@@ -20,6 +20,9 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary rounded-pill w-100 lh-lg">Check</button>
+                            <div class="d-flex justify-content-between mt-3">
+                                Sudah punya akun ? <a href="/auth/login">Login</a>
+                            </div>
                         </form>
                     </div>
                 </div>

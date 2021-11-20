@@ -49,3 +49,20 @@ a {
 input[type="file"] {
     visibility: hidden;
 }
+
+.profile {
+    color: #333;
+    text-decoration: none;
+}
+
+.profile:hover {
+    color: #333 !important;
+}
+
+.profile:focus {
+    box-shadow: none;
+}
+
+.profile::after {
+    display: none;
+}
