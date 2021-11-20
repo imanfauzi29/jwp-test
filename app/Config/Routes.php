@@ -39,6 +39,11 @@ $routes->post('auth/login', 'Auth::postLogin');
 $routes->get('/auth/register', 'Auth::register');
 $routes->post('/auth/register', 'Auth::postRegister');
 
+$routes->get('/auth/forgot-password', 'Auth::forgotPassword');
+$routes->get('/auth/forgot-password/reset-password/token/(:hash)', 'Auth::resetPassword/$1');
+$routes->post('/auth/forgot-password/reset-password/token/(:hash)', 'Auth::resetPassword/$1');
+$routes->post('auth/forgot-password', 'Auth::postForgotPassword');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
